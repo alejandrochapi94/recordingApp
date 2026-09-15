@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Grabadora 30s</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Grabadora Rápida</h1>
+        <p class="status" id="status-text">Lista para grabar</p>
+
+        <div class="buttons-container">
+            <button id="btn-record" class="btn primary">🔴 Iniciar Grabación</button>
+            <button id="btn-listen" class="btn secondary" disabled>⏹️ Escuchar (Últimos 30s)</button>
+            <button id="btn-listen-again" class="btn outline" disabled>▶️ Volver a escuchar</button>
+        </div>
+
+        <!-- Reproductor oculto -->
+        <audio id="audio-player" style="display:none;"></audio>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
