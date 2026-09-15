@@ -13,11 +13,19 @@ const statusText = document.getElementById('status-text');
 
 async function startRecording() {
     try {
+        // --- CORRECCIÓN AQUÍ ---
+        // Detenemos cualquier audio que esté sonando antes de volver a grabar
+        if (!audioPlayer.paused) {
+            audioPlayer.pause();
+        }
+        audioPlayer.currentTime = 0; // Reiniciamos el tiempo por si acaso
+        // -----------------------
+
         // Pedimos acceso al micrófono
         stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         mediaRecorder = new MediaRecorder(stream);
         
-        // LA OPCIÓN 1 EN ACCIÓN: Vaciamos la memoria al iniciar
+        // Vaciamos la memoria al iniciar (Opción 1)
         audioChunks = [];
         finalDurationSeconds = 0;
         
@@ -71,7 +79,7 @@ function playLast30Seconds() {
     audioPlayer.currentTime = startTime;
     audioPlayer.play();
 
-    // Apagamos el micrófono para ahorrar batería (muy importante en celulares)
+    // Apagamos el micrófono para ahorrar batería
     if (stream) {
         stream.getTracks().forEach(track => track.stop());
     }
@@ -80,8 +88,8 @@ function playLast30Seconds() {
     statusText.innerText = "Reproduciendo últimos 30s";
     btnRecord.disabled = false;
     btnRecord.innerText = "🔴 Reanudar Grabación";
-    btnRecord.classList.replace('primary', 'secondary'); // Cambio visual opcional
-    btnRecord.style.backgroundColor = "#ff4757"; // Mantener rojo
+    btnRecord.classList.replace('primary', 'secondary'); 
+    btnRecord.style.backgroundColor = "#ff4757"; 
     
     btnListen.disabled = true;
     btnListenAgain.disabled = false;
@@ -89,6 +97,11 @@ function playLast30Seconds() {
 
 function listenAgain() {
     if (audioPlayer.src) {
+        // --- CORRECCIÓN AQUÍ ---
+        // Pausamos el audio actual antes de reiniciarlo para evitar que se monte o falle
+        audioPlayer.pause();
+        // -----------------------
+
         const startTime = Math.max(0, finalDurationSeconds - 30);
         audioPlayer.currentTime = startTime;
         audioPlayer.play();
