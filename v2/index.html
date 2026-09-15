@@ -12,7 +12,31 @@
 </head>
 <body>
     <!-- (El resto del código de tus botones queda igual) -->
-    
+    <div class="app-container">
+        <!-- Barra de estado con letra grande -->
+        <div id="status-bar">LISTO</div>
+
+        <!-- Botón Rojo -->
+        <button id="btn-record" class="big-btn red-btn">
+            <span class="icon">🔴</span>
+            <span class="text" id="record-text">GRABAR</span>
+        </button>
+
+        <!-- Botón Verde -->
+        <button id="btn-listen" class="big-btn green-btn" disabled>
+            <span class="icon">🔊</span>
+            <span class="text">ESCUCHAR</span>
+        </button>
+
+        <!-- Botón Amarillo -->
+        <button id="btn-listen-again" class="big-btn yellow-btn" disabled>
+            <span class="icon">🔄</span>
+            <span class="text">REPETIR</span>
+        </button>
+
+        <!-- Reproductor oculto -->
+        <audio id="audio-player" style="display:none;"></audio>
+    </div>
     <script src="app.js"></script>
     
     <!-- Registro del Service Worker (NUEVO) -->
