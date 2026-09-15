@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Grabadora Auto</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Enlace al manifest (NUEVO) -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff3b30">
+</head>
+<body>
+    <!-- (El resto del código de tus botones queda igual) -->
+    
+    <script src="app.js"></script>
+    
+    <!-- Registro del Service Worker (NUEVO) -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('Service Worker registrado:', reg.scope))
+            .catch(err => console.error('Error al registrar Service Worker:', err));
+        });
+      }
+    </script>
+</body>
+</html>

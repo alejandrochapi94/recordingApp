@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    user-select: none; /* Evita que el texto se seleccione al tocarlo repetidamente */
+}
+
+body {
+    background-color: #000; /* Fondo negro de alto contraste */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    overflow: hidden; /* Evita que la pantalla se desplace (scroll) */
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px;
+    gap: 15px; /* Espacio entre botones */
+}
+
+#status-bar {
+    color: #fff;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 900;
+    padding: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Estilo base para los botones gigantes */
+.big-btn {
+    flex: 1; /* Hace que los botones se estiren y ocupen el mismo espacio vertical */
+    border-radius: 20px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem; /* Letras gigantes */
+    font-weight: 900;
+    box-shadow: 0 10px 0 rgba(0,0,0,0.5); /* Efecto 3D de botón pulsable */
+    transition: transform 0.1s, box-shadow 0.1s, opacity 0.3s;
+}
+
+/* Efecto al presionar (hundimiento) */
+.big-btn:active:not(:disabled) {
+    transform: translateY(10px);
+    box-shadow: 0 0 0 rgba(0,0,0,0.5);
+}
+
+/* Estilo cuando están desactivados */
+.big-btn:disabled {
+    opacity: 0.25;
+    transform: none;
+}
+
+/* Tamaño de los íconos (Emojis) */
+.icon {
+    font-size: 4.5rem;
+    margin-bottom: 5px;
+}
+
+.text {
+    letter-spacing: 2px;
+}
+
+/* Colores específicos de alto contraste */
+.red-btn {
+    background-color: #ff3b30;
+    color: white;
+}
+
+.green-btn {
+    background-color: #34c759;
+    color: white;
+}
+
+.yellow-btn {
+    background-color: #ffcc00;
+    color: black; /* Letras negras para mejor contraste en amarillo */
+}
